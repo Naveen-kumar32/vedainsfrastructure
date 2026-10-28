@@ -7,7 +7,7 @@
 }
 .preloader.is-done { clip-path: circle(0% at 50% 50%); visibility: hidden; }
 .preloader__inner { text-align: center; }
-.preloader__mark { width: 110px; margin: 0 auto 24px; animation: markPop 1.4s var(--ease) infinite alternate; filter: drop-shadow(0 10px 30px rgba(244, 140, 51, .4)); }
+.preloader__mark { width: 170px; margin: 0 auto 28px; animation: markPop 1.4s var(--ease) infinite alternate; filter: drop-shadow(0 10px 30px rgba(244, 140, 51, .4)); }
 .preloader__bar { width: 180px; height: 4px; background: rgba(255, 255, 255, .12); border-radius: 4px; overflow: hidden; margin: 0 auto; }
 .preloader__bar span { display: block; height: 100%; width: 40%; background: linear-gradient(90deg, var(--orange), var(--gold)); animation: barSlide 1.1s ease-in-out infinite; }
 .preloader__text { color: rgba(255, 255, 255, .6); font-family: var(--f-head); letter-spacing: 4px; text-transform: uppercase; font-size: 13px; margin-top: 16px; }
