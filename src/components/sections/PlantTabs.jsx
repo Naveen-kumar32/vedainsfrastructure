@@ -1,36 +1,41 @@
 import { useState } from "react";
 import SectionHead from "../common/SectionHead.jsx";
+import useInterval from "../../hooks/useInterval.js";
+import { prefersReducedMotion } from "../../hooks/useReveal.js";
 import { plants } from "../../data/fleet.js";
 
 export default function PlantTabs() {
   const [active, setActive] = useState(0);
-  const p = plants[active];
+  const [clicks, setClicks] = useState(0); // restarts the auto-rotate timer after a click
+
+  useInterval(() => setActive((a) => (a + 1) % plants.length), prefersReducedMotion() ? null : 4500, clicks);
 
   return (
-    <section className="section section--sand plant">
+    <section className="section plant">
       <div className="container">
-        <SectionHead eyebrow="Own infrastructure" title="From quarry to carpet, all in-house" />
+        <SectionHead eyebrow="Own Infrastructure" title={<>From <span className="hl">quarry to carpet</span>, all in-house</>} />
         <div className="plant__wrap reveal">
-          <div className="plant__tabs" role="tablist" aria-label="Plant and materials">
-            {plants.map((t, i) => (
+          <div className="plant__tabs" role="tablist">
+            {plants.map((p, i) => (
               <button
-                key={t.tab}
+                key={p.tab}
                 role="tab"
-                id={`plant-tab-${i}`}
                 aria-selected={i === active}
-                aria-controls="plant-panel"
                 className={i === active ? "is-active" : ""}
-                onClick={() => setActive(i)}
+                onClick={() => { setActive(i); setClicks((c) => c + 1); }}
               >
-                <b>{t.tab}</b>
-                <span>{t.desc}</span>
+                <span>{String(i + 1).padStart(2, "0")}</span>{p.tab}
               </button>
             ))}
           </div>
-          <figure className="plant__stage" id="plant-panel" role="tabpanel" aria-labelledby={`plant-tab-${active}`}>
-            <img key={p.img} src={`/images/${p.img}.webp`} alt={p.desc} loading="lazy" />
-            <figcaption>{p.title}</figcaption>
-          </figure>
+          <div className="plant__stage">
+            {plants.map((p, i) => (
+              <figure key={p.img} className={`plant__panel ${i === active ? "is-active" : ""}`}>
+                <img src={`/images/${p.img}.webp`} alt={p.desc} loading="lazy" />
+                <figcaption><b>{p.title}</b>{p.desc}</figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </div>
     </section>

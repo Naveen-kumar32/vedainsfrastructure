@@ -14,7 +14,7 @@ export default function ProjectsGallery({ featured = false }) {
   const gridRef = useRef(null);
 
   const list = useMemo(() => {
-    if (featured) return projects.filter((p) => p.featured).slice(0, 6);
+    if (featured) return projects.filter((p) => p.featured);
     return filter === "all" ? projects : projects.filter((p) => p.cats.includes(filter));
   }, [featured, filter]);
 
@@ -23,10 +23,11 @@ export default function ProjectsGallery({ featured = false }) {
 
   return (
     <section className="section projects">
+      <div className="projects__shape" aria-hidden="true" />
       <div className="container">
-        <SectionHead variant="row" eyebrow="Projects" title="Work that speaks for itself">
+        <SectionHead variant="row" eyebrow="Project Portfolio" title={<>Work that <span className="hl">speaks</span> for itself</>}>
           {featured ? (
-            <Link to="/projects" className="btn btn--outline reveal">All Projects <Icon name="arrow" /></Link>
+            <Link to="/projects" className="btn btn--outline reveal">View All Projects <Icon name="arrow" /></Link>
           ) : (
             <div className="filters reveal" role="tablist" aria-label="Filter projects">
               {projectFilters.map((f) => (

@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
+import Preloader from "./Preloader.jsx";
 import FloatingActions from "./FloatingActions.jsx";
 import useReveal from "../../hooks/useReveal.js";
 import "./layout.css";
@@ -17,6 +18,7 @@ const titles = {
 
 export default function Layout() {
   const { pathname } = useLocation();
+  const [loaded, setLoaded] = useState(false);
 
   // New page: jump to top and set the tab title
   useEffect(() => {
@@ -24,13 +26,14 @@ export default function Layout() {
     document.title = titles[pathname] ?? "Page Not Found | Veda Infrastructure";
   }, [pathname]);
 
-  useReveal(null, [pathname]);
+  useReveal(null, [pathname, loaded]);
 
   return (
     <>
+      <Preloader onDone={() => setLoaded(true)} />
       <Header />
       <main>
-        <Outlet />
+        <Outlet context={{ loaded }} />
       </main>
       <Footer />
       <FloatingActions />

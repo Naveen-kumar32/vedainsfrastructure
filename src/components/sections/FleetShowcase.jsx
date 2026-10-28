@@ -1,27 +1,39 @@
-import SectionHead from "../common/SectionHead.jsx";
+import Counter from "../common/Counter.jsx";
+import { Eyebrow } from "../common/SectionHead.jsx";
 import { equipment, fleetPhotos } from "../../data/fleet.js";
 
 export default function FleetShowcase() {
+  const max = Math.max(...equipment.map((e) => e.count));
   return (
     <section className="section strength">
       <div className="container">
-        <SectionHead
-          eyebrow="Our fleet"
-          title="The largest fleet operator in Thiruvallur & Kanchipuram District"
-          text="We own our machines, so we don't wait on hire schedules. Every project moves on our timeline, not someone else's."
-        />
+        <div className="strength__head">
+          <div>
+            <div className="reveal"><Eyebrow>Our Strength</Eyebrow></div>
+            <h2 className="title reveal">The <span className="hl">largest fleet operator</span> in Thiruvallur &amp; Kanchipuram District</h2>
+          </div>
+          <p className="strength__note reveal">We own our own machines, so we don't wait on hire schedules. Every project moves on our timeline, not someone else's.</p>
+        </div>
+      </div>
 
-        <dl className="equip reveal">
-          {equipment.map((e) => (
-            <div key={e.name}><dt>{e.count}</dt><dd>{e.name}</dd></div>
-          ))}
-        </dl>
-
-        <div className="fleet-grid">
-          {fleetPhotos.slice(0, 6).map((p, i) => (
-            <figure key={p.img} className="reveal" style={{ "--i": i % 3 }}>
-              <img src={`/images/${p.img}.webp`} alt={p.alt} loading="lazy" />
+      <div className="fleet-strip">
+        <div className="fleet-strip__track">
+          {[...fleetPhotos, ...fleetPhotos].map((p, i) => (
+            <figure key={i} aria-hidden={i >= fleetPhotos.length}>
+              <img src={`/images/${p.img}.webp`} alt={i < fleetPhotos.length ? p.alt : ""} loading="lazy" />
             </figure>
+          ))}
+        </div>
+      </div>
+
+      <div className="container">
+        <div className="equip">
+          {equipment.map((e, i) => (
+            <div key={e.name} className="equip__card reveal" style={{ "--i": i }}>
+              <Counter value={e.count} />
+              <span>{e.name}</span>
+              <div className="equip__bar"><i style={{ "--w": `${Math.max((e.count / max) * 100, 22)}%` }} /></div>
+            </div>
           ))}
         </div>
       </div>
