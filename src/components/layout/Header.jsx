@@ -24,8 +24,7 @@ export default function Header() {
     <header className={`header ${scrolled ? "is-scrolled" : ""}`}>
       <div className="container header__inner">
         <Link to="/" className="brand" aria-label="Veda Infrastructure home">
-          <img src="/images/logo-mark.png" alt="" className="brand__mark" />
-          <span className="brand__text"><b>VEDA</b><small>INFRASTRUCTURE</small></span>
+          <img src="/images/veda-logo.png" alt="Veda Infrastructure" className="brand__logo" />
         </Link>
 
         <nav className={`nav ${open ? "is-open" : ""}`} id="nav" aria-label="Main">

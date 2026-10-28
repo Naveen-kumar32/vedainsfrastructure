@@ -17,31 +17,26 @@
 .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; z-index: 1001; background: linear-gradient(90deg, var(--orange), var(--gold)); }
 
 /* ---------- Header ---------- */
-.header { position: fixed; inset: 0 0 auto; z-index: 1000; height: var(--header-h); transition: background .4s, box-shadow .4s, height .4s; }
-.header.is-scrolled { background: rgba(255, 255, 255, .92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 8px 30px -18px rgba(23, 20, 58, .4); height: 68px; }
+/* Always white; it shrinks a little and gains a shadow once the page scrolls. */
+.header { position: fixed; inset: 0 0 auto; z-index: 1000; height: var(--header-h); background: #fff; box-shadow: 0 1px 0 var(--line); transition: box-shadow .4s, height .4s; }
+.header.is-scrolled { box-shadow: 0 8px 30px -18px rgba(23, 20, 58, .4); height: 68px; }
 .header__inner { height: 100%; display: flex; align-items: center; justify-content: space-between; }
 .brand { display: flex; align-items: center; gap: 12px; position: relative; z-index: 1002; }
-.brand__mark { width: 50px; background: #fff; border-radius: 14px; padding: 6px 7px; box-shadow: 0 6px 20px -8px rgba(0, 0, 0, .4); transition: transform .5s var(--ease); }
-.brand:hover .brand__mark { transform: rotate(-8deg) scale(1.05); }
-.brand__text { display: flex; flex-direction: column; line-height: 1; font-family: var(--f-head); color: #fff; transition: color .4s; }
-.brand__text b { font-size: 26px; font-weight: 900; letter-spacing: 3px; }
-.brand__text b::first-letter { color: var(--gold); }
-.brand__text small { font-size: 12px; letter-spacing: 3.4px; font-weight: 700; opacity: .85; }
-.header.is-scrolled .brand__text { color: var(--indigo); }
+.brand__logo { height: 46px; width: auto; transition: height .4s var(--ease), transform .5s var(--ease); }
+.brand:hover .brand__logo { transform: translateY(-2px); }
+.header.is-scrolled .brand__logo { height: 40px; }
 
 .nav { display: flex; align-items: center; gap: 4px; }
 .nav a {
-  position: relative; padding: 10px 14px; color: #fff; font-family: var(--f-head); font-weight: 600; font-size: 17px;
-  letter-spacing: 1.2px; text-transform: uppercase; transition: color .3s;
+  position: relative; padding: 10px 14px; font-family: var(--f-head); font-weight: 600; font-size: 17px;
+  letter-spacing: 1.2px; text-transform: uppercase; color: var(--indigo); transition: color .3s;
 }
 .nav a:not(.nav__cta)::after {
   content: ""; position: absolute; left: 14px; right: 14px; bottom: 4px; height: 2px; background: var(--orange);
   transform: scaleX(0); transform-origin: right; transition: transform .35s var(--ease);
 }
 .nav a:hover::after, .nav a.is-active::after { transform: scaleX(1); transform-origin: left; }
-.nav a.is-active { color: var(--gold); }
-.header.is-scrolled .nav a { color: var(--indigo); }
-.header.is-scrolled .nav a.is-active { color: var(--orange); }
+.nav a.is-active { color: var(--orange); }
 .nav .nav__cta { margin-left: 10px; background: var(--orange); color: #fff !important; border-radius: 999px; padding: 10px 22px; transition: background .3s, transform .3s; }
 .nav .nav__cta:hover, .nav .nav__cta.active { background: var(--indigo); transform: translateY(-2px); }
 
@@ -56,8 +51,8 @@
 .footer { background: var(--ink); color: rgba(255, 255, 255, .7); padding: 80px 0 0; position: relative; }
 .footer::before { content: ""; position: absolute; inset: 0 0 auto; height: 6px; background: linear-gradient(90deg, var(--orange) 0 33%, var(--gold) 33% 66%, var(--navy) 66%); }
 .footer__grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.3fr; gap: 40px; }
-.footer__logo { background: #fff; display: inline-block; padding: 14px 18px; border-radius: 16px; margin-bottom: 18px; }
-.footer__logo img { width: 200px; }
+.footer__logo { display: inline-block; margin-bottom: 18px; }
+.footer__logo img { width: 240px; }
 .footer h4 { color: #fff; font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
 .footer__grid > div:not(.footer__brand) a, .footer__grid > div:not(.footer__brand) span { display: block; padding: 5px 0; transition: color .3s, transform .3s; }
 .footer__grid a:hover { color: var(--gold); transform: translateX(4px); }
@@ -87,11 +82,8 @@
   .nav a, .header.is-scrolled .nav a { color: #fff; font-size: 32px; font-weight: 800; }
   .nav a.is-active, .header.is-scrolled .nav a.is-active { color: var(--gold); }
   .nav .nav__cta { margin: 20px 0 0; font-size: 22px; padding: 14px 34px; }
-  .header:has(.nav.is-open) .brand__text { color: #fff; }
 }
 @media (max-width: 640px) {
-  .brand__mark { width: 42px; }
-  .brand__text b { font-size: 22px; }
-  .brand__text small { font-size: 10px; letter-spacing: 2.6px; }
+  .brand__logo, .header.is-scrolled .brand__logo { height: 36px; }
   .footer__grid { grid-template-columns: 1fr; }
 }

@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer__grid">
         <div className="footer__brand">
-          <div className="footer__logo"><img src="/images/logo.png" alt="Veda Infrastructure" /></div>
+          <div className="footer__logo"><img src="/images/veda-logo.png" alt="Veda Infrastructure" /></div>
           <p>Expert civil contractors since {company.since}. Roads, bridges, industrial and infrastructure projects across Tamil Nadu.</p>
         </div>
         <div>
