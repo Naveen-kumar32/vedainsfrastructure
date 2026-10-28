@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { navLinks } from "../../data/company.js";
+import { company, navLinks } from "../../data/company.js";
+import Icon from "../common/Icon.jsx";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -8,7 +9,7 @@ export default function Header() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -21,11 +22,11 @@ export default function Header() {
   }, [open]);
 
   return (
-    <header className={`header ${scrolled ? "is-scrolled" : ""}`}>
+    <header className={`header ${scrolled || open ? "is-solid" : ""}`}>
       <div className="container header__inner">
         <Link to="/" className="brand" aria-label="Veda Infrastructure home">
           <img src="/images/logo-mark.png" alt="" className="brand__mark" />
-          <span className="brand__text"><b>VEDA</b><small>INFRASTRUCTURE</small></span>
+          <span className="brand__text"><b>Veda</b><small>Infrastructure</small></span>
         </Link>
 
         <nav className={`nav ${open ? "is-open" : ""}`} id="nav" aria-label="Main">
@@ -34,7 +35,8 @@ export default function Header() {
               {l.label}
             </NavLink>
           ))}
-          <NavLink to="/contact" className="nav__cta">Get a Quote</NavLink>
+          <a href={company.phones[0].href} className="nav__phone"><Icon name="phone" />{company.phones[0].label}</a>
+          <Link to="/contact" className="btn btn--primary nav__cta">Get a Quote</Link>
         </nav>
 
         <button
@@ -44,7 +46,7 @@ export default function Header() {
           aria-controls="nav"
           onClick={() => setOpen((o) => !o)}
         >
-          <span /><span /><span />
+          <span /><span />
         </button>
       </div>
     </header>

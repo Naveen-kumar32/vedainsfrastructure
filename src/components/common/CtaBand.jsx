@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom";
+import Icon from "./Icon.jsx";
 import { company } from "../../data/company.js";
 
 export default function CtaBand() {
   return (
     <section className="cta">
-      <div className="cta__stripes" aria-hidden="true" />
-      <div className="container cta__inner">
-        <h2 className="reveal">Have land to level, a road to lay or a structure to raise?</h2>
-        <div className="cta__actions reveal">
-          <a href={company.phones[0].href} className="btn btn--dark">Call {company.phones[0].label}</a>
-          <Link to="/contact" className="btn btn--outline">Get a Quote</Link>
+      <div className="container cta__inner reveal">
+        <div>
+          <h2>Have land to level, a road to lay or a structure to raise?</h2>
+          <p>Tell us about your site. We'll visit, assess and send you a clear quote.</p>
+        </div>
+        <div className="cta__actions">
+          <Link to="/contact" className="btn btn--primary">Get a Quote <Icon name="arrow" /></Link>
+          <a href={company.phones[0].href} className="btn btn--ghost">Call {company.phones[0].label}</a>
         </div>
       </div>
     </section>

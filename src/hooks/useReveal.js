@@ -3,7 +3,7 @@ import { useEffect } from "react";
 export const prefersReducedMotion = () =>
   typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const SELECTOR = ".reveal:not(.is-visible), .reveal-left:not(.is-visible), .reveal-up:not(.is-visible)";
+const SELECTOR = ".reveal:not(.is-visible)";
 
 /**
  * Adds `.is-visible` to reveal elements as they scroll into view.

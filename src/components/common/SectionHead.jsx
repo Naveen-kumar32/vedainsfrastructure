@@ -1,28 +1,23 @@
-export function Eyebrow({ children, light, center }) {
-  return (
-    <p className={`eyebrow ${light ? "eyebrow--light" : ""}`}>
-      <span className="eyebrow__line" />
-      {children}
-      {center && <span className="eyebrow__line" />}
-    </p>
-  );
+export function Eyebrow({ children, light }) {
+  return <p className={`eyebrow ${light ? "eyebrow--light" : ""}`}>{children}</p>;
 }
 
 /**
- * Section heading: eyebrow + title.
- * variant: "center" | "row" (title left, children right) | undefined
+ * Section heading: eyebrow + title + optional intro text.
+ * variant: "center" | "row" (heading left, children right) | undefined
  */
-export default function SectionHead({ eyebrow, title, light, variant, children }) {
+export default function SectionHead({ eyebrow, title, text, light, variant, children }) {
   const cls = ["section-head", light && "section-head--light", variant && `section-head--${variant}`].filter(Boolean).join(" ");
   const head = (
-    <>
-      <div className="reveal"><Eyebrow light={light} center={variant === "center"}>{eyebrow}</Eyebrow></div>
-      <h2 className="title reveal">{title}</h2>
-    </>
+    <div className="reveal">
+      <Eyebrow light={light}>{eyebrow}</Eyebrow>
+      <h2 className="title">{title}</h2>
+      {text && <p>{text}</p>}
+    </div>
   );
   return (
     <div className={cls}>
-      {variant === "row" ? <div>{head}</div> : head}
+      {head}
       {children}
     </div>
   );

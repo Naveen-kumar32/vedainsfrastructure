@@ -2,7 +2,7 @@ import PageHero from "../components/common/PageHero.jsx";
 import AboutIntro from "../components/sections/AboutIntro.jsx";
 import Philosophy from "../components/sections/Philosophy.jsx";
 import Quality from "../components/sections/Quality.jsx";
-import ClientsMarquee from "../components/common/ClientsMarquee.jsx";
+import Clients from "../components/common/Clients.jsx";
 import CtaBand from "../components/common/CtaBand.jsx";
 
 export default function About() {
@@ -18,7 +18,7 @@ export default function About() {
       <AboutIntro />
       <Philosophy />
       <Quality />
-      <ClientsMarquee />
+      <Clients />
       <CtaBand />
     </>
   );

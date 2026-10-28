@@ -40,51 +40,52 @@ export default function ContactSection() {
   return (
     <section className="section contact">
       <div className="container contact__grid">
-        <div className="contact__info">
-          <div className="reveal"><Eyebrow>Contact</Eyebrow></div>
-          <h2 className="title reveal">Let's build <span className="hl">something lasting</span></h2>
+        <div className="contact__info reveal">
+          <Eyebrow>Contact</Eyebrow>
+          <h2 className="title">Let's build something lasting</h2>
+          <p className="lead">Call us, email us or send the form. We usually reply within one working day.</p>
 
-          <div className="cinfo reveal">
-            <div className="cinfo__icon"><Icon name="pin" /></div>
-            <div><h4>Registered Office</h4><p>{company.address[0]}<br />{company.address[1]}</p></div>
-          </div>
-          <div className="cinfo reveal">
+          <div className="cinfo">
             <div className="cinfo__icon"><Icon name="phone" /></div>
             <div>
-              <h4>Call Us</h4>
+              <h4>Call</h4>
               <p>{company.phones.map((p, i) => <span key={p.href}>{i > 0 && <br />}<a href={p.href}>{p.label}</a></span>)}</p>
             </div>
           </div>
-          <div className="cinfo reveal">
+          <div className="cinfo">
             <div className="cinfo__icon"><Icon name="mail" /></div>
             <div><h4>Email</h4><p><a href={`mailto:${company.email}`}>{company.email}</a></p></div>
           </div>
-          <div className="map reveal">
+          <div className="cinfo">
+            <div className="cinfo__icon"><Icon name="pin" /></div>
+            <div><h4>Registered office</h4><p>{company.address[0]}<br />{company.address[1]}</p></div>
+          </div>
+          <div className="map">
             <iframe title="Veda Infrastructure office location" src={company.mapEmbed} loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
           </div>
         </div>
 
-        <form className="cform reveal-up" onSubmit={submit} noValidate>
-          <h3>Request a Quote</h3>
+        <form className="cform reveal" onSubmit={submit} noValidate>
+          <h3>Request a quote</h3>
           <p className="cform__sub">Tell us about your project and we'll get back to you.</p>
           <div className={`field ${errors.name ? "has-error" : ""}`}>
-            <input id="f-name" name="name" value={form.name} onChange={update} placeholder=" " required />
-            <label htmlFor="f-name">Your Name</label>
+            <label htmlFor="f-name">Your name</label>
+            <input id="f-name" name="name" value={form.name} onChange={update} autoComplete="name" required />
           </div>
           <div className={`field ${errors.phone ? "has-error" : ""}`}>
-            <input id="f-phone" name="phone" type="tel" value={form.phone} onChange={update} placeholder=" " required />
-            <label htmlFor="f-phone">Phone Number</label>
+            <label htmlFor="f-phone">Phone number</label>
+            <input id="f-phone" name="phone" type="tel" value={form.phone} onChange={update} autoComplete="tel" required />
           </div>
           <div className={`field ${errors.type ? "has-error" : ""}`}>
+            <label htmlFor="f-type">Project type</label>
             <select id="f-type" name="type" value={form.type} onChange={update} required>
-              <option value="" disabled hidden />
+              <option value="" disabled>Select a project type</option>
               {projectTypes.map((t) => <option key={t}>{t}</option>)}
             </select>
-            <label htmlFor="f-type">Project Type</label>
           </div>
           <div className="field">
-            <textarea id="f-msg" name="message" rows="4" value={form.message} onChange={update} placeholder=" " />
-            <label htmlFor="f-msg">Project Details</label>
+            <label htmlFor="f-msg">Project details <small>(optional)</small></label>
+            <textarea id="f-msg" name="message" rows="4" value={form.message} onChange={update} placeholder="Location, size of site, timeline…" />
           </div>
           <button className="btn btn--primary btn--block" type="submit">Send Enquiry <Icon name="arrow" /></button>
           <p className="cform__note" role="status">{note}</p>
