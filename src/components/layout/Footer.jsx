@@ -28,7 +28,7 @@ export default function Footer() {
       </div>
       <div className="container footer__bottom">
         <span>© {new Date().getFullYear()} Veda Infrastructure. All rights reserved.</span>
-        <span className="footer__msme">MSME Registered · {company.udyam}</span>
+        <span>Designed &amp; Developed by <b className="footer__credit">Leadbig Solutions</b></span>
       </div>
     </footer>
   );

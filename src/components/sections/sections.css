@@ -42,11 +42,9 @@
 
 .hero__badge { position: absolute; z-index: 3; right: 7%; bottom: 14%; width: 170px; height: 170px; }
 .hero__badge svg { width: 100%; height: 100%; animation: spin 18s linear infinite; }
-.hero__badge text { fill: #fff; font-family: var(--f-head); font-weight: 700; font-size: 15.5px; letter-spacing: 3.2px; }
-.hero__badge img { position: absolute; inset: 50% auto auto 50%; width: 92px; height: 92px; object-fit: contain; transform: translate(-50%, -50%); background: #fff; border-radius: 50%; padding: 18px 14px; box-shadow: 0 10px 30px rgba(0, 0, 0, .3); }
-.hero__counter { position: absolute; z-index: 3; left: max(20px, calc((100% - 1240px) / 2)); bottom: 36px; font-family: var(--f-head); display: flex; align-items: baseline; gap: 6px; }
-.hero__counter b { font-size: 34px; color: var(--gold); }
-.hero__counter span { opacity: .6; letter-spacing: 2px; }
+.hero__badge text { fill: #fff; font-family: var(--f-head); font-weight: 700; font-size: 14px; letter-spacing: 2px; }
+.hero__badge-logo { position: absolute; inset: 50% auto auto 50%; width: 92px; height: 92px; transform: translate(-50%, -50%); display: grid; place-items: center; background: #fff; border-radius: 50%; box-shadow: 0 10px 30px rgba(0, 0, 0, .3); }
+.hero__badge-logo img { width: 66%; height: auto; display: block; }
 
 /* ---------- About ---------- */
 .about__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 7vw, 100px); align-items: center; }
@@ -116,20 +114,22 @@
 /* ---------- Plant tabs ---------- */
 .plant { background: var(--cream); }
 .plant::before { content: ""; position: absolute; top: 0; right: 0; width: 40%; height: 100%; background: radial-gradient(circle, rgba(244, 140, 51, .18) 2px, transparent 2.5px) 0 0/22px 22px; pointer-events: none; }
+.plant__track { height: calc(100vh + (var(--steps) - 1) * 100vh); }
+.plant__sticky { position: sticky; top: var(--header-h); height: calc(100vh - var(--header-h)); display: flex; align-items: center; }
 .plant__wrap { display: grid; grid-template-columns: 300px 1fr; gap: 30px; align-items: stretch; }
 .plant__tabs { display: flex; flex-direction: column; gap: 12px; }
 .plant__tabs button {
   display: flex; align-items: center; gap: 16px; text-align: left; padding: 22px 24px; border-radius: 16px; isolation: isolate;
   border: 0; background: #fff; color: var(--indigo); font-family: var(--f-head); font-size: 22px; font-weight: 700; text-transform: uppercase;
-  position: relative; overflow: hidden; transition: color .4s, transform .4s var(--ease); box-shadow: 0 6px 18px -12px rgba(23, 20, 58, .3);
+  position: relative; overflow: hidden; transition: color .8s, transform .8s var(--ease); box-shadow: 0 6px 18px -12px rgba(23, 20, 58, .3);
 }
-.plant__tabs button span { font-size: 15px; color: var(--orange); transition: color .4s; }
-.plant__tabs button::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(110deg, var(--indigo), var(--navy)); transform: scaleX(0); transform-origin: left; transition: transform .5s var(--ease); }
+.plant__tabs button span { font-size: 15px; color: var(--orange); transition: color .8s; }
+.plant__tabs button::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(110deg, var(--indigo), var(--navy)); transform: scaleX(0); transform-origin: left; transition: transform 1s var(--ease); }
 .plant__tabs button.is-active { color: #fff; transform: translateX(10px); }
 .plant__tabs button.is-active span { color: var(--gold); }
 .plant__tabs button.is-active::before { transform: scaleX(1); }
-.plant__stage { position: relative; border-radius: 28px; overflow: hidden; min-height: 460px; box-shadow: var(--shadow); clip-path: polygon(0 0, 100% 0, 100% 100%, 8% 100%, 0 88%); }
-.plant__panel { position: absolute; inset: 0; margin: 0; opacity: 0; transform: scale(1.08); transition: opacity .8s, transform 1.4s var(--ease); }
+.plant__stage { position: relative; border-radius: 28px; overflow: hidden; min-height: min(460px, calc(100vh - var(--header-h) - 80px)); box-shadow: var(--shadow); clip-path: polygon(0 0, 100% 0, 100% 100%, 8% 100%, 0 88%); }
+.plant__panel { position: absolute; inset: 0; margin: 0; opacity: 0; transform: scale(1.08); transition: opacity 1.4s ease, transform 2.4s var(--ease); }
 .plant__panel.is-active { opacity: 1; transform: none; }
 .plant__panel img { width: 100%; height: 100%; object-fit: cover; }
 .plant__panel figcaption { position: absolute; right: 24px; bottom: 24px; max-width: 360px; background: rgba(255, 255, 255, .94); backdrop-filter: blur(8px); padding: 20px 24px; border-radius: 16px; color: var(--muted); font-size: 15px; border-left: 5px solid var(--orange); }
@@ -238,16 +238,16 @@
   .plant__tabs { flex-direction: row; overflow-x: auto; padding-bottom: 6px; scrollbar-width: none; }
   .plant__tabs button { flex: none; font-size: 18px; padding: 16px 20px; }
   .plant__tabs button.is-active { transform: translateY(-4px); }
-  .plant__stage { min-height: 380px; }
+  .plant__stage { min-height: min(380px, calc(100vh - var(--header-h) - 140px)); }
   .hero__badge { width: 120px; height: 120px; right: 20px; bottom: 90px; }
-  .hero__badge img { width: 66px; height: 66px; padding: 13px 10px; }
+  .hero__badge-logo { width: 66px; height: 66px; }
   .hero__shape--orange { width: 50vw; opacity: .6; }
   .quality__imgs { height: 420px; }
 }
 @media (max-width: 640px) {
   .hero { padding-top: 110px; align-items: flex-start; }
   .hero__content { padding-top: 6vh; }
-  .hero__shape--gold, .hero__counter, .hero__badge { display: none; }
+  .hero__shape--gold, .hero__badge { display: none; }
   .about__media { padding: 0 20px 60px 0; }
   .about__years { left: -6px; padding: 16px 18px; }
   .about__years b { font-size: 44px; }

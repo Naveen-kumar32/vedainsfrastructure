@@ -66,12 +66,10 @@ export default function Hero() {
       <div className="hero__badge" aria-hidden="true" ref={addRef(6)}>
         <svg viewBox="0 0 200 200">
           <defs><path id="circlePath" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" /></defs>
-          <text><textPath href="#circlePath">QUALITY · SAFETY · DEADLINES · SINCE 2009 · </textPath></text>
+          <text><textPath href="#circlePath" textLength="489" lengthAdjust="spacing">QUALITY · SAFETY · DEADLINES · SINCE 2009 ·</textPath></text>
         </svg>
-        <img src="/images/vs-logo.png" alt="" />
+        <span className="hero__badge-logo"><img src="/images/vs-logo.png" alt="" /></span>
       </div>
-
-      <div className="hero__counter"><b>{String(current + 1).padStart(2, "0")}</b><span>/ {String(slides.length).padStart(2, "0")}</span></div>
     </section>
   );
 }
