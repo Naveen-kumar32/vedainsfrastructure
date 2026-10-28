@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import useInterval from "../../hooks/useInterval.js";
+import { prefersReducedMotion } from "../../hooks/useReveal.js";
 
-/** Full-screen gallery for one project. Arrow keys, swipe and Esc supported. */
+/** Full-screen gallery for one project. Auto-advances; arrow keys, swipe and Esc supported. */
 export default function Lightbox({ project, onClose }) {
   const [index, setIndex] = useState(0);
   const closeRef = useRef(null);
@@ -8,6 +10,9 @@ export default function Lightbox({ project, onClose }) {
   const total = project.imgs.length;
 
   const step = useCallback((d) => setIndex((i) => (i + d + total) % total), [total]);
+
+  // Keyed on index so a manual step restarts the countdown.
+  useInterval(() => step(1), total > 1 && !prefersReducedMotion() ? 4500 : null, index);
 
   useEffect(() => {
     const prevFocus = document.activeElement;
@@ -45,8 +50,9 @@ export default function Lightbox({ project, onClose }) {
         <img key={index} src={`/images/${project.imgs[index]}.webp`} alt={`${project.title}, photo ${index + 1}`} />
         <figcaption>
           <b>{project.title}</b>
-          <span>{project.client} · {project.desc}</span>
+          <span>{project.client}</span>
           <small>{index + 1} / {total}</small>
+          <p className="lightbox__details">{project.details ?? project.desc}</p>
         </figcaption>
       </figure>
       {total > 1 && <button className="lightbox__nav lightbox__nav--next" aria-label="Next image" onClick={() => step(1)}>›</button>}

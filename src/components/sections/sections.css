@@ -43,7 +43,7 @@
 .hero__badge { position: absolute; z-index: 3; right: 7%; bottom: 14%; width: 170px; height: 170px; }
 .hero__badge svg { width: 100%; height: 100%; animation: spin 18s linear infinite; }
 .hero__badge text { fill: #fff; font-family: var(--f-head); font-weight: 700; font-size: 15.5px; letter-spacing: 3.2px; }
-.hero__badge img { position: absolute; inset: 50% auto auto 50%; width: 76px; transform: translate(-50%, -50%); background: #fff; border-radius: 50%; padding: 16px 13px; box-shadow: 0 10px 30px rgba(0, 0, 0, .3); }
+.hero__badge img { position: absolute; inset: 50% auto auto 50%; width: 92px; height: 92px; object-fit: contain; transform: translate(-50%, -50%); background: #fff; border-radius: 50%; padding: 18px 14px; box-shadow: 0 10px 30px rgba(0, 0, 0, .3); }
 .hero__counter { position: absolute; z-index: 3; left: max(20px, calc((100% - 1240px) / 2)); bottom: 36px; font-family: var(--f-head); display: flex; align-items: baseline; gap: 6px; }
 .hero__counter b { font-size: 34px; color: var(--gold); }
 .hero__counter span { opacity: .6; letter-spacing: 2px; }
@@ -102,8 +102,8 @@
 .fleet-strip:hover .fleet-strip__track { animation-play-state: paused; }
 .fleet-strip figure { margin: 0; width: clamp(260px, 30vw, 420px); aspect-ratio: 16/10; border-radius: 20px; overflow: hidden; flex: none; }
 .fleet-strip figure:nth-child(even) { transform: translateY(26px); border-radius: 80px 20px 80px 20px; }
-.fleet-strip img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease), filter .6s; filter: saturate(.9); }
-.fleet-strip figure:hover img { transform: scale(1.1); filter: saturate(1.2); }
+.fleet-strip img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease), filter .6s; filter: var(--photo); }
+.fleet-strip figure:hover img { transform: scale(1.1); filter: var(--photo) saturate(1.1); }
 .equip { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-top: 30px; }
 .equip__card { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 24px 20px; transition: transform .4s var(--ease), box-shadow .4s, opacity .9s var(--ease); }
 .equip__card:hover { box-shadow: var(--shadow); }
@@ -240,7 +240,7 @@
   .plant__tabs button.is-active { transform: translateY(-4px); }
   .plant__stage { min-height: 380px; }
   .hero__badge { width: 120px; height: 120px; right: 20px; bottom: 90px; }
-  .hero__badge img { width: 54px; padding: 11px 9px; }
+  .hero__badge img { width: 66px; height: 66px; padding: 13px 10px; }
   .hero__shape--orange { width: 50vw; opacity: .6; }
   .quality__imgs { height: 420px; }
 }
