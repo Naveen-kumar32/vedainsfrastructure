@@ -9,9 +9,9 @@ export default function Strength() {
     <>
       <PageHero
         crumb="Our Strength"
-        title="Our Own"
-        highlight="Fleet & Plant"
-        subtitle="The largest fleet operator in Thiruvallur & Kanchipuram District, with our own aggregate quarry and bitumen plant."
+        title="Our Fleet &"
+        highlight="Expertise"
+        subtitle="The largest fleet operator in Thiruvallur & Kanchipuram District."
         image="fleet-5"
       />
       <FleetShowcase />

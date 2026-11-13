@@ -10,7 +10,6 @@ const projectTypes = [
   "Building Construction",
   "Compound / Retaining Wall",
   "Bridge / Culvert",
-  "Aggregate / M-Sand Supply",
   "Other",
 ];
 const empty = { name: "", phone: "", type: "", message: "" };
@@ -46,7 +45,7 @@ export default function ContactSection() {
 
           <div className="cinfo reveal">
             <div className="cinfo__icon"><Icon name="pin" /></div>
-            <div><h4>Registered Office</h4><p>{company.address[0]}<br />{company.address[1]}</p></div>
+            <div><h4>Registered Office</h4><p>{company.address.map((line, i) => <span key={i}>{i > 0 && <br />}{line}</span>)}</p></div>
           </div>
           <div className="cinfo reveal">
             <div className="cinfo__icon"><Icon name="phone" /></div>

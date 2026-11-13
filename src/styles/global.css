@@ -65,13 +65,14 @@ p { margin: 0 0 1em; }
 .eyebrow--light .eyebrow__line::after { background: var(--orange); }
 
 .title { font-size: clamp(36px, 5.2vw, 64px); font-weight: 800; text-transform: uppercase; }
-.hl { color: var(--orange); position: relative; z-index: 0; }
-.hl::after {
-  content: ""; position: absolute; left: 0; bottom: .06em; height: .18em; width: 100%;
-  background: var(--gold); opacity: .45; z-index: -1; transform: scaleX(0); transform-origin: left;
-  transition: transform 1s .4s var(--ease);
+/* Underline drawn as a background so it follows every line when the highlight wraps. */
+.hl {
+  color: var(--orange);
+  background: linear-gradient(rgba(252, 196, 37, .45), rgba(252, 196, 37, .45)) no-repeat left 0 bottom .06em / 0 .18em;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  transition: background-size 1s .4s var(--ease);
 }
-.is-visible .hl::after { transform: scaleX(1); }
+.is-visible .hl { background-size: 100% .18em; }
 
 .section-head { max-width: 760px; margin-bottom: 56px; }
 .section-head--center { text-align: center; margin-inline: auto; }

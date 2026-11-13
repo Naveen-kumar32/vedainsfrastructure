@@ -40,7 +40,7 @@ export default function PlantTabs() {
   return (
     <section className="section plant">
       <div className="container">
-        <SectionHead eyebrow="Own Infrastructure" title={<>From <span className="hl">quarry to carpet</span>, all in-house</>} />
+        <SectionHead eyebrow="What We Build" title={<>Expertise in <span className="hl">High-Rise Buildings</span>, Roads &amp; Bridges and Land Development</>} />
       </div>
       <div className="plant__track" ref={track} style={{ "--steps": plants.length }}>
         <div className="plant__sticky" ref={sticky}>

@@ -18,9 +18,9 @@ export const fleetPhotos = [
   { img: "fleet-4", alt: "White tipper fleet on open ground" },
 ];
 
+// Expertise areas on the Strength page. Images are placeholders until the client sends project photos.
 export const plants = [
-  { tab: "M-Sand", title: "Our Aggregate Quarry", desc: "Manufactured sand (M-Sand) from our own crusher line.", img: "quarry-msand" },
-  { tab: "40 mm Aggregate", title: "40 mm Aggregate", desc: "Graded coarse aggregate for sub-base and concrete works.", img: "quarry-40mm" },
-  { tab: "20 mm Aggregate", title: "20 mm Aggregate", desc: "Consistent sizing for RCC and road layers.", img: "quarry-20mm" },
-  { tab: "Bitumen Plant", title: "Bitumen Plant", desc: "Hot mix supplied straight to our road sites.", img: "bitumen-plant" },
+  { tab: "High-Rise Buildings", title: "High-Rise Buildings", desc: "Residential and commercial high-rise structures, from RCC frame to finishing.", img: "highrise-1" },
+  { tab: "Roads & Bridges", title: "Roads & Bridges", desc: "Highways, BT roads, culverts and RCC bridges with their approach roads.", img: "bridge-1" },
+  { tab: "Land Development", title: "Land Development", desc: "Mass filling, grading and complete plot layouts with roads and storm water drains.", img: "rwd-chemba-2" },
 ];

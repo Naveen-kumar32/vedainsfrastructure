@@ -4,7 +4,7 @@ import Icon from "../common/Icon.jsx";
 import useInterval from "../../hooks/useInterval.js";
 import { prefersReducedMotion } from "../../hooks/useReveal.js";
 
-const slides = ["hero-road", "hero-grader", "hero-bridge", "hero-quarry", "hero-lake"];
+const slides = ["hero-road", "hero-grader", "hero-lake"];
 const dots = [
   { s: 140, x: "-50px", y: "86%", d: "0s" },
   { s: 46, x: "70px", y: "93%", d: "1.2s" },
@@ -55,7 +55,7 @@ export default function Hero() {
           <span className="line"><span>Cities Stand On.</span></span>
         </h1>
         <p className="hero__lead hero__fade">
-          High-rise buildings, roads &amp; bridges and land development projects, carried out with our own fleet, quarry and bitumen plant in Thiruvallur &amp; Kanchipuram.
+          High-rise buildings, roads &amp; bridges and land development projects, carried out with our own fleet in Thiruvallur &amp; Kanchipuram.
         </p>
         <div className="hero__actions hero__fade">
           <Link to="/projects" className="btn btn--primary">Explore Projects <Icon name="arrow" /></Link>

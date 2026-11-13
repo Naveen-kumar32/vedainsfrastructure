@@ -10,7 +10,7 @@ import "./layout.css";
 const titles = {
   "/": "Veda Infrastructure | Civil Contractors in Chennai Since 2009",
   "/about": "About Us | Veda Infrastructure",
-  "/strength": "Our Strength: Fleet, Quarry & Plant | Veda Infrastructure",
+  "/strength": "Our Strength: Fleet & Expertise | Veda Infrastructure",
   "/projects": "Projects | Veda Infrastructure",
   "/services": "Services | Veda Infrastructure",
   "/contact": "Contact | Veda Infrastructure",
