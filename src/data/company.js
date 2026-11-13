@@ -4,10 +4,10 @@ export const company = {
   tagline: "We are expertise in Civil Contractors Since 2009",
   address: ["No 178, Nolambur Phase-2, Cross Street,", "Chennai – 600037, Tamil Nadu, India"],
   phones: [
-    { label: "+91 98406 65050", href: "tel:+919840665050" },
     { label: "044 4645 4108", href: "tel:04446454108" },
+    { label: "+91 87544 03483", href: "tel:+918754403483" },
   ],
-  email: "vedainfra36@gmail.com",
+  email: "contact@vedainfrastructure.in",
   udyam: "UDYAM-TN-02-0409891",
   mapEmbed: "https://maps.google.com/maps?q=Nolambur%20Phase%202%2C%20Chennai%20600037&z=15&output=embed",
 };

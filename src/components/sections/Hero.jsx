@@ -55,7 +55,7 @@ export default function Hero() {
           <span className="line"><span>Cities Stand On.</span></span>
         </h1>
         <p className="hero__lead hero__fade">
-          Roads, bridges, industrial filling, land development and buildings, carried out with our own fleet, quarry and bitumen plant in Thiruvallur &amp; Kanchipuram.
+          High-rise buildings, roads &amp; bridges and land development projects, carried out with our own fleet, quarry and bitumen plant in Thiruvallur &amp; Kanchipuram.
         </p>
         <div className="hero__actions hero__fade">
           <Link to="/projects" className="btn btn--primary">Explore Projects <Icon name="arrow" /></Link>
