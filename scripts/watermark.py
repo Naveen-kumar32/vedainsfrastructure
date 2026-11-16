@@ -1,4 +1,4 @@
-"""Stamp the Veda watermark onto every photo.
+"""Enhance every photo and stamp the Veda watermark on it.
 
 Clean originals live in source-images/ (not published). This script writes
 watermarked copies to public/images/, so it is safe to re-run.
@@ -7,7 +7,7 @@ To add a new photo: drop it (.webp/.jpg/.png) into source-images/ and run
 Output is always .webp with the same base name.
 """
 from pathlib import Path
-from PIL import Image, ImageFilter
+from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "source-images"
@@ -20,6 +20,21 @@ SHADOW = 0.2       # soft dark shadow so the white text also reads on light skie
 
 # The supplied PNG is a faint grey; use only its shape and redraw it as white text with a shadow.
 _shape = MARK.getchannel("A").point(lambda a: 255 if a > 4 else 0)
+
+
+# These sources were already enhanced by hand before enhancement moved into this script.
+PRE_ENHANCED = {"highrise-2", "highrise-3", "highrise-4"}
+
+
+def enhance(img):
+    """Gentle clean-up: auto brightness levels, a touch of contrast and colour, then sharpening."""
+    # Stretch brightness only (Y channel) so colours keep their natural tone (red soil stays red, not orange).
+    y, cb, cr = img.convert("YCbCr").split()
+    y = ImageOps.autocontrast(y, cutoff=(0.3, 0.3))
+    img = Image.merge("YCbCr", (y, cb, cr)).convert("RGB")
+    img = ImageEnhance.Contrast(img).enhance(1.04)
+    img = ImageEnhance.Color(img).enhance(1.04)
+    return img.filter(ImageFilter.UnsharpMask(radius=1.4, percent=65, threshold=3))
 
 
 def build_mark(width):
@@ -39,11 +54,14 @@ def build_mark(width):
 for path in sorted(SRC.iterdir()):
     if path.suffix.lower() not in {".webp", ".jpg", ".jpeg", ".png"}:
         continue
-    img = Image.open(path).convert("RGBA")
+    img = Image.open(path).convert("RGB")
+    if path.stem not in PRE_ENHANCED:
+        img = enhance(img)
+    img = img.convert("RGBA")
     w = int(img.width * WIDTH_RATIO)
     mark = build_mark(w)
     margin = max(12, round(img.width * MARGIN_RATIO))
     pos = (img.width - mark.width - margin, img.height - mark.height - margin)
     img.alpha_composite(mark, pos)
-    img.convert("RGB").save(OUT / f"{path.stem}.webp", "WEBP", quality=85)
+    img.convert("RGB").save(OUT / f"{path.stem}.webp", "WEBP", quality=90, method=6)
     print("watermarked", path.name)

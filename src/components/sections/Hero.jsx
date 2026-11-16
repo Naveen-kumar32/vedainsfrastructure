@@ -4,7 +4,7 @@ import Icon from "../common/Icon.jsx";
 import useInterval from "../../hooks/useInterval.js";
 import { prefersReducedMotion } from "../../hooks/useReveal.js";
 
-const slides = ["hero-road", "hero-grader", "hero-lake"];
+const slides = ["hero-fleet", "hero-levelling", "hero-plot-road", "hero-bt-road", "hero-shed-filling", "highrise-1"];
 const dots = [
   { s: 140, x: "-50px", y: "86%", d: "0s" },
   { s: 46, x: "70px", y: "93%", d: "1.2s" },
