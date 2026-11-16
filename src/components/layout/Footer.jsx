@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { company, navLinks } from "../../data/company.js";
 import { expertise } from "../../data/services.js";
+import Icon from "../common/Icon.jsx";
 
 export default function Footer() {
   return (
@@ -21,9 +22,15 @@ export default function Footer() {
         </div>
         <div>
           <h4>Reach Us</h4>
-          {company.phones.map((p) => <a key={p.href} href={p.href}>{p.label}</a>)}
-          <a href={`mailto:${company.email}`}>{company.email}</a>
-          <span className="footer__addr">{company.address.join(" ")}</span>
+          <div className="footer__group">
+            {company.phones.map((p) => <a key={p.href} href={p.href} className="footer__item"><Icon name="phone" />{p.label}</a>)}
+          </div>
+          <div className="footer__group">
+            {company.emails.map((e) => <a key={e} href={`mailto:${e}`} className="footer__item"><Icon name="mail" />{e}</a>)}
+          </div>
+          <div className="footer__group">
+            <span className="footer__item footer__addr"><Icon name="pin" />{company.address.join(" ")}</span>
+          </div>
         </div>
       </div>
       <div className="container footer__bottom">

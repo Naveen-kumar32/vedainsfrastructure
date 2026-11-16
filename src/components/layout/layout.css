@@ -56,7 +56,10 @@
 .footer h4 { color: var(--indigo); font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
 .footer__grid > div:not(.footer__brand) a, .footer__grid > div:not(.footer__brand) span { display: block; padding: 5px 0; transition: color .3s, transform .3s; }
 .footer__grid a:hover { color: var(--orange-d); transform: translateX(4px); }
-.footer__addr { font-size: 15px; margin-top: 6px; }
+.footer__addr { font-size: 15px; }
+.footer__group + .footer__group { margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line); }
+.footer__grid > div:not(.footer__brand) .footer__item { display: flex; align-items: flex-start; gap: 10px; overflow-wrap: anywhere; }
+.footer__item svg { flex: none; width: 18px; height: 18px; margin-top: .2em; fill: none; stroke: var(--orange); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .footer__credit { color: var(--orange-d); font-weight: 700; }
 .footer__bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; border-top: 1px solid var(--line); margin-top: 60px; padding: 24px 0; font-size: 14px; }
 

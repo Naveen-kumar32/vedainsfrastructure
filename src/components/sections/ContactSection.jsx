@@ -31,7 +31,7 @@ export default function ContactSection() {
       return;
     }
     const body = `Name: ${form.name}\nPhone: ${form.phone}\nProject Type: ${form.type}\n\n${form.message}`;
-    window.location.href = `mailto:${company.email}?subject=${encodeURIComponent("Project Enquiry – " + form.type)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:${company.emails.join(",")}?subject=${encodeURIComponent("Project Enquiry – " + form.type)}&body=${encodeURIComponent(body)}`;
     setNote(`Opening your email app… You can also call us on ${company.phones[0].label}.`);
     setForm(empty);
   };
@@ -56,7 +56,7 @@ export default function ContactSection() {
           </div>
           <div className="cinfo reveal">
             <div className="cinfo__icon"><Icon name="mail" /></div>
-            <div><h4>Email</h4><p><a href={`mailto:${company.email}`}>{company.email}</a></p></div>
+            <div><h4>Email</h4><p>{company.emails.map((e, i) => <span key={e}>{i > 0 && <br />}<a href={`mailto:${e}`}>{e}</a></span>)}</p></div>
           </div>
           <div className="map reveal">
             <iframe title="Veda Infrastructure office location" src={company.mapEmbed} loading="lazy" referrerPolicy="no-referrer-when-downgrade" />

@@ -12,7 +12,7 @@ export const company = {
     { label: "044 4645 4108", href: "tel:04446454108" },
     { label: "+91 87544 03483", href: "tel:+918754403483" },
   ],
-  email: "contact@vedainfrastructure.in",
+  emails: ["contact@vedainfrastructure.in", "vedainfra36@gmail.com"],
   udyam: "UDYAM-TN-02-0409891",
   mapEmbed: "https://maps.google.com/maps?q=13.0757895,80.1730115&z=17&output=embed",
 };
